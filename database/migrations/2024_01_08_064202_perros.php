@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('perros', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 64);
-            $table->string('img', 175);
-            $table->string('raza', 20);
-            $table->string('sub_raza', 20)->nullable();
-            $table->string('color', 15);
+            $table->string('img', 200);
+            $table->unsignedBigInteger('raza_id');
+            $table->foreign('raza_id')->references('id')->on('razas');
+            $table->unsignedBigInteger('tamaño_id');
+            $table->foreign('tamaño_id')->references('id')->on('tamaños');
+            $table->unsignedBigInteger('color_pelo_id');
+            $table->foreign('color_pelo_id')->references('id')->on('colores_pelo');
             $table->timestamps();
         });
     }

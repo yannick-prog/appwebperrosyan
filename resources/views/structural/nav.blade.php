@@ -19,8 +19,8 @@
                     </a>
                 </li>
                 <li class="nav-item my-1">
-                    <a v-bind:class="[{active:dataFieldClass('añadirperro', '{{Route::currentRouteName()}}')}, navButtonClass]"
-                       href="{{ route('añadirperro') }}">
+                    <a v-bind:class="[{active:dataFieldClass('añadirperro.show', '{{Route::currentRouteName()}}')}, navButtonClass]"
+                       href="{{ route('añadirperro.show') }}">
                         Añadir Perru
                     </a>
                 </li>

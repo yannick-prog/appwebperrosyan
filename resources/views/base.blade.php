@@ -17,9 +17,8 @@
 
 <body>
 @include('structural.nav')
-<div class="container">
+<div class="container pt-5">
 
-    keykeykey
     @yield('content')
 </div>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
