@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AñadirPerro extends Model
+class PerroColor extends Model
 {
     use HasFactory;
 
-    protected $table = 'perros';
+    protected $table = 'perros_colores';
     protected $fillable = [
         'id',
-        'nombre',
-        'color',
-        'raza_id',
+        'perro_id',
+        'color_id',
     ];
 }

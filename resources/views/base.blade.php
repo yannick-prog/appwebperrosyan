@@ -17,10 +17,10 @@
 
 <body>
 @include('structural.nav')
-<div class="container pt-5">
+<main class="container pt-5">
 
     @yield('content')
-</div>
+</main>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
 <script src="{{ asset('jquery/jquery_3.5.1.js') }}"></script>

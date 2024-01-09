@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PerrosController;
 use App\Http\Controllers\AñadirPerrosController;
 
 
@@ -19,13 +20,12 @@ Route::get('/', function () {
     return view('sections.index');
 });
 
-//Route::get('/perros', [ContactoController::class, 'show'])->name('perros.show');
 
-Route::get('/perros', function () {
-    return view('sections.index');
-})->name('perros');
+Route::get('/perros', [PerrosController::class, 'show'])->name('perros.show');
 
-Route::get('/añadirperro', [AñadirPerrosController::class, 'show'])->name('añadirperro.show');
+Route::get('/añadirperro', [AñadirPerrosController::class, 'create'])->name('añadirperro.create');
+
+Route::post('/guardarperro', [AñadirPerrosController::class, 'store'])->name('añadirperro.store');
 
 /*
  *

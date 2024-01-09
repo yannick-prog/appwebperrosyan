@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('razas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_raza', 32);
+            $table->string('nombre_raza', 32)->unique();
         });
     }
 

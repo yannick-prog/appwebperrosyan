@@ -13,15 +13,15 @@
             <ul class="navbar-nav ms-auto me-4">
                 <li class="nav-item my-1">
                     <a
-                        v-bind:class="[{active:dataFieldClass('perros', '{{Route::currentRouteName()}}')}, navButtonClass, 'me-3']"
-                        href="{{ route('perros') }}">
+                        v-bind:class="[{active:dataFieldClass('perros.show', '{{Route::currentRouteName()}}')}, navButtonClass, 'me-3']"
+                        href="{{ route('perros.show') }}">
                          Ver perros
                     </a>
                 </li>
                 <li class="nav-item my-1">
-                    <a v-bind:class="[{active:dataFieldClass('añadirperro.show', '{{Route::currentRouteName()}}')}, navButtonClass]"
-                       href="{{ route('añadirperro.show') }}">
-                        Añadir Perru
+                    <a v-bind:class="[{active:dataFieldClass('añadirperro.create', '{{Route::currentRouteName()}}')}, navButtonClass]"
+                       href="{{ route('añadirperro.create') }}">
+                        Añadir Perro
                     </a>
                 </li>
 
