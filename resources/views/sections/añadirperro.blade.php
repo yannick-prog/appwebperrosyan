@@ -20,8 +20,6 @@
 
     <section class="row" id="app">
 
-        {{storage_path('app/perros/Y-si-tu-perro-pudiera-vivir-cien-anos.jpg')}}
-
             <div class="card col-sm-12 col-mg-10 col-lg-5 mx-auto">
                 <h5 class="card-header">Añadir perro</h5>
                 <div class="card-body">
@@ -66,18 +64,21 @@
                         <div class="d-flex justify-content-evenly px-5">
                             @foreach($colores as $key=>$color)
                                 <input type="checkbox" class="btn-check" name="colores[]" id="color{{$color->id}}" value="{{$color->id}}" autocomplete="off">
-                                <label class="btn btn-outline-light" for="color{{$color->id}}">{{$color->color_pelo}}</label>
+                                <label v-on:click="onClickCheck({{$key}})" class="btn btn-outline-light" for="color{{$color->id}}">{{$color->color_pelo}}</label>
                             @endforeach
                         </div>
-
+                        <div v-show:="peloCheckChecked" class="invalid-feedback" style="display: block">
+                            Seleciona un color de pelo, puedes seleccionar varios si tu perro tiene mas de un color
+                        </div>
 
                         <br><br>
                         <button class="btn btn-success w-100" id="envForm" :disabled=isDisabled()>Enviar</button>
                     </form>
                 </div>
             </div>
-
+        @{{ arrValoresCheck[1] }}
     </section>
+
 
 @endsection
 
@@ -93,6 +94,8 @@
                     isInvalid: 'is-invalid form-control',
                     isValid: 'form-control',
                     count: 0,
+                    arrValoresCheck: [false, false, false],
+                    peloCheckChecked: true,
                 }
             },
             methods: {
@@ -114,7 +117,14 @@
                         return false
                     else
                         return true
-                }
+                },
+                onClickCheck(i) {
+                    this.arrValoresCheck[i] = !this.arrValoresCheck[i]
+                    this.peloCheckChecked = false
+
+                    this.peloCheckChecked = !this.arrValoresCheck.includes(true)
+                },
+
             }
         })
 
@@ -145,12 +155,10 @@
                         let info = jQuery.parseJSON(res);
                         console.log(info.img);
                         $("#modalPerroLabel").text('El perro ' + info.nombre + " se ha añadido!")
-                        $(".modal-body").html("<img src='"+ info.img +"'>")
+                        $(".modal-body").html("<img class='width-100' src='"+ info.img +"'><figure><figcaption>"+info.nombre+"</figcaption><figure>")
 
                         $("#modalPerro").modal('show')
 
-
-                        //$("#formPerro").after().html("<section id='perroSubidoMsj'>El perro " + res + "se ha añadido correctamete</section>");
                     });
 
             });
