@@ -33,13 +33,25 @@ class AñadirPerrosController extends Controller
             'colores' => 'required|array',
         ]);
 */
+        /*
+
         $file = $request->file('foto_perro');
         $filename = $file->getClientOriginalName();
         $path = $request->file('foto_perro')->storeAs('perros/', $filename);
 
+        $ruta_completa = storage_path('app/perros/'.$filename);
+
+        */
+
+        //Subir archivo a la carpeta public
+        $destinationPath = 'storage';
+        $myimage = $request->foto_perro->getClientOriginalName();
+        $request->foto_perro->move(public_path($destinationPath), $myimage);
+
+
         $perro = new Perro;
         $perro->nombre = $request->nombre;
-        $perro->img = $filename;
+        $perro->img = $myimage;
         $perro->raza_id = $request->raza;
         $perro->tamaño_id = $request->tamanos;
         $perro->save();
@@ -53,13 +65,11 @@ class AñadirPerrosController extends Controller
             $perro_color->save();
         }
 
-        $ruta = Storage::get('bichon-maltes.jpg');
+        $ruta_img = asset('storage/'.$myimage);
 
-        dd($ruta);
+        $respuesta = ['nombre' => $request->nombre, 'img' => $ruta_img];
 
-        //$respuesta = ['nombre' => $request->nombre, 'img' => $ruta];
-
-        //return response()->json ($respuesta);
+        return response()->json ($respuesta);
 
     }
 }

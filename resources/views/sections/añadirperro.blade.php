@@ -123,6 +123,7 @@
     </script>
 
     <script>
+
         $(function(){
             $("#formPerro").on("submit", function(e){
                 e.preventDefault();
@@ -144,7 +145,7 @@
                         let info = jQuery.parseJSON(res);
                         console.log(info.img);
                         $("#modalPerroLabel").text('El perro ' + info.nombre + " se ha añadido!")
-                        //$(".modal-body").html("<figure src='"+ info.img +"'></figure>")
+                        $(".modal-body").html("<img src='"+ info.img +"'>")
 
                         $("#modalPerro").modal('show')
 
@@ -154,6 +155,8 @@
 
             });
         });
+
+
     </script>
 @endsection
 
