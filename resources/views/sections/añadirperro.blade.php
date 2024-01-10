@@ -23,7 +23,7 @@
             <div class="card col-sm-12 col-mg-10 col-lg-5 mx-auto">
                 <h5 class="card-header">Añadir perro</h5>
                 <div class="card-body">
-                    <form method="post" action="{{route('añadirperro.store')}}" enctype="multipart/form-data" id="formPerro" ref="imgFile">
+                    <form method="post" action="{{route('añadirperro.store')}}" enctype="multipart/form-data" id="formPerro">
                         @csrf
 
                         <div class="mb-3 row d-flex d-flex justify-content-center">
@@ -97,7 +97,7 @@
 
             data() {
                 return {
-                    files: [],
+                    img: false,
                     nombre: "",
                     isInvalid: 'is-invalid form-control',
                     isValid: 'form-control',
@@ -108,10 +108,13 @@
             },
             methods: {
                 checkIfImgFile(){
-                    console.log(this.$refs.img.value)
+                    if(this.$refs.img.files.length>0)
+                        this.img = true
+                    else
+                        this.img = false
                 },
                 isInvalidFile() {
-                    if (true)
+                    if (this.img)
                         return this.isValid
                     else
                         return this.isInvalid
