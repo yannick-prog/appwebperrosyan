@@ -32,6 +32,7 @@
                                 <input v-on:change="checkIfImgFile()" v-bind:class="isInvalidFile()" name="foto_perro" type="file" id="inputNombre" ref="img">
                             </div>
                         </div>
+
                         <div class="mb-3 row d-flex justify-content-center">
                             <label for="inputNombre" class="col-sm-3 col-form-label justify-content-center">Nombre</label>
                             <div class="col-sm-10 col-md-5 col-lg-9">
@@ -58,7 +59,7 @@
                         <br>
                         <div class="d-flex justify-content-evenly px-5">
                             @foreach($tamanos as $key=>$tamano)
-                                <input type="radio" class="btn-check" name="tamanos" id="tamano{{$tamano->id}}" value="{{$tamano->id}}"  autocomplete="off" @if($key==1) {{'checked'}} @endif>
+                                <input type="radio" class="btn-check" name="tamanos" id="tamano{{$key+1}}" value="{{$tamano->id}}"  autocomplete="off" @if($key==1) {{'checked'}} @endif>
                                 <label class="btn btn-outline-info" for="tamano{{$tamano->id}}">{{$tamano->tamaño}}</label>
                             @endforeach
                         </div>
@@ -108,6 +109,8 @@
             },
             methods: {
                 checkIfImgFile(){
+                    //let getImg = this.$refs.img.files.name.substring(0, 4)
+                    //let isImg = getImg == "image"
                     if(this.$refs.img.files.length>0)
                         this.img = true
                     else
@@ -127,7 +130,7 @@
                         return this.isValid
                 },
                 isDisabled() {
-                    if(this.nombre.length >= 3 && this.file && !this.peloCheckChecked)
+                    if(this.nombre.length >= 3 && this.img && !this.peloCheckChecked)
                         return false
                     else
                         return true
@@ -170,6 +173,7 @@
                         $(".modal-body").html("<img class='width-100' src='"+ info.img +"'><figure><figcaption>"+info.nombre+"</figcaption><figure>")
 
                         $("#modalPerro").modal('show')
+
 
                     });
 
