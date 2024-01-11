@@ -1,6 +1,11 @@
 @extends('base')
 @section('title', 'Perros web - Añadir')
 
+@section('librerias')
+
+    @vite('resources/js/mas_perro.js')
+
+@endsection
 @section('content')
 
     <!-- Modal -->

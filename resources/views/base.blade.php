@@ -13,6 +13,7 @@
     <!-- css -->
     <link href="{{ asset('css/base.css') }}" rel="stylesheet">
     @yield('css')
+    @yield('librerias')
 </head>
 
 <body>
