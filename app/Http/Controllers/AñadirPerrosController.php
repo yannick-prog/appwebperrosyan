@@ -17,10 +17,18 @@ class AñadirPerrosController extends Controller
         $tamanos = DB::table('tamaños')->get();
         $colores = DB::table('colores_pelo')->orderBy('color_pelo')->get();
 
+        //$respuesta = ['razas' => $razas, 'tamanos' => $tamanos, 'colores' => $colores];
+
+        //return response()->json ($respuesta);
+
         return view('sections.añadirperro')
             ->with('razas', $razas)
             ->with('tamanos', $tamanos)
             ->with('colores', $colores);
+    }
+
+    public function getAtributosPerros(){
+
     }
 
     public function store(Request $request){

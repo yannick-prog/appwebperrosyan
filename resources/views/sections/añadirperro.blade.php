@@ -93,7 +93,7 @@
 @section('scripts')
 
     <script setup>
-        import { ref } from 'vue'
+        //import { ref } from 'vue'
 
     </script>
 
@@ -148,7 +148,9 @@
             }
         })
 
-        app.mount('#app')
+
+
+
 
     </script>
 
