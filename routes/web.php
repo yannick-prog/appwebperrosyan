@@ -15,16 +15,19 @@ use App\Http\Controllers\AñadirPerrosController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//Ruta 1 index raiz
 Route::get('/', function () {
     return view('sections.index');
 });
 
+//Ruta 2 ver perros
+Route::get('/perros', function () {
+    return view('sections.vistaperros');
+})->name('perros.show');
+Route::get('/getperros', [PerrosController::class, 'get']);
 
-Route::get('/perros', [PerrosController::class, 'show'])->name('perros.show');
-
+//Ruta 3 añadir perro
 Route::get('/añadirperro', [AñadirPerrosController::class, 'create'])->name('añadirperro.create');
-
 Route::post('/guardarperro', [AñadirPerrosController::class, 'store'])->name('añadirperro.store');
 
 /*
